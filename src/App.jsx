@@ -348,24 +348,28 @@ function HomeSection() {
         </p>
         
         {/* Buttons */}
-        <div className="mt-5 sm:mt-7 flex flex-wrap justify-center items-center gap-3 sm:gap-4">
-          <motion.a
-            href="#projects"
-            className="rounded-full bg-blue-600 px-5 sm:px-6 py-2.5 font-semibold text-white text-xs sm:text-sm shadow-lg shadow-blue-500/30 transition-all duration-300"
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 15px rgba(59, 130, 246, 0.4)" }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Explore MERN Projects
-          </motion.a>
-          <motion.a
-            href="/images/Fatima Butt.pdf" target="_blank"
-            className="rounded-full border-2 border-blue-500 bg-white px-5 sm:px-6 py-2.5 font-semibold text-blue-700 text-xs sm:text-sm transition-all duration-300"
-            whileHover={{ scale: 1.03, borderColor: "#155DFC", color: "#155DFC", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <FaFilePdf className="inline mr-2"/> Download Resume
-          </motion.a>
-        </div>
+        <div className="mt-5 sm:mt-7 flex justify-center items-center gap-3 flex-wrap sm:flex-nowrap">
+  <motion.a
+    href="#projects"
+    className="rounded-full bg-blue-600 px-5 py-2.5 font-semibold text-white text-xs sm:text-sm shadow-lg shadow-blue-500/30 transition-all duration-300
+               flex-1 min-w-0 sm:flex-none sm:max-w-none text-center"
+    whileHover={{ scale: 1.05, boxShadow: "0 10px 15px rgba(59, 130, 246, 0.4)" }}
+    whileTap={{ scale: 0.98 }}
+  >
+    Explore Projects
+  </motion.a>
+  <motion.a
+    href="/images/Fatima Butt.pdf"
+    target="_blank"
+    className="rounded-full border-2 border-blue-500 bg-white px-5 py-2.5 font-semibold text-blue-700 text-xs sm:text-sm transition-all duration-300
+               flex-1 min-w-0 sm:flex-none sm:max-w-none text-center"
+    whileHover={{ scale: 1.03, borderColor: "#155DFC", color: "#155DFC", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <FaFilePdf className="inline mr-2"/> Resume
+  </motion.a>
+</div>
+
       </motion.div>
     </PageContainer>
   );
@@ -448,14 +452,30 @@ function AboutSection() {
 }
 
 // --- Projects Section (Mobile Optimized Text) ---
+// --- Projects Section (Compact & Mobile-Optimized) ---
 function ProjectsSection() {
   const list = useMemo(() => [
-    { title: "MERN Real‑Estate", desc: "A full-stack property listing platform featuring Firebase authentication and image storage.", tech: ["Mongo", "Express", "React", "Node", "Firebase"], code: "https://github.com/Fatimabutt786/Mern-Real-Estate", img: "/images/mern estate.jpg" },
-    { title: "Prescripto — Doctor Booking", desc: "A booking application to streamline doctor appointments and schedule management.", tech: ["React", "Node", "Mongo", "Express", "Tailwind"], code: "https://github.com/Fatimabutt786/Prescripto", img: "/images/presc.png" },
-    { title: "Random Joke Generator", desc: "A fun frontend utility to fetch and display jokes with a playful, animated UI.", tech: ["JavaScript", "HTML", "CSS", "API"], code: "https://github.com/Fatimabutt786/Random-joke-generator", img: "/images/joke.jpg" },
-    { title: "Music_Player (Java OOP)", desc: "A console-based music library manager demonstrating Object-Oriented Programming principles.", tech: ["Java", "OOP", "Data Structures"], code: "https://github.com/Fatimabutt786/Music_Player", img: "/images/music.webp" },
-    { title: "Portfolio (Bootstrap)", desc: "My previous personal portfolio, showcasing responsive design using Bootstrap framework.", tech: ["Bootstrap", "HTML", "CSS"], code: "https://github.com/Fatimabutt786/My-portfolio-using-bootstrap", img: "/images/portfolio.webp" },
-    { title: "Rock‑Paper‑Scissors (C++)", desc: "A command-line game implemented in C++ focusing on clean, robust game logic.", tech: ["C++", "OOP"], code: "https://github.com/Fatimabutt786/Rock-paper-scissor-game-in-c-", img: "/images/Rock.jpg" },
+    {
+      title: "MERN Real‑Estate",
+      desc: "A full-stack property listing platform with Firebase authentication and image storage.",
+      tech: ["Mongo", "Express", "React", "Node", "Firebase"],
+      code: "https://github.com/Fatimabutt786/Mern-Real-Estate",
+      img: "/images/mern estate.jpg"
+    },
+    {
+      title: "Prescripto — Doctor Booking",
+      desc: "A booking app to streamline doctor appointments and schedule management.",
+      tech: ["React", "Node", "Mongo", "Express", "Tailwind"],
+      code: "https://github.com/Fatimabutt786/Prescripto",
+      img: "/images/presc.png"
+    },
+    {
+      title: "Random Joke Generator",
+      desc: "Frontend utility to fetch and display jokes with playful animations.",
+      tech: ["JavaScript", "HTML", "CSS", "API"],
+      code: "https://github.com/Fatimabutt786/Random-joke-generator",
+      img: "/images/joke.jpg"
+    }
   ], []);
 
   const ProjectCard = ({ p, index }) => (
@@ -463,23 +483,39 @@ function ProjectsSection() {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.2 }}
-      variants={{...fadeIn, transition: { duration: 0.5, delay: index * 0.1 }}}
+      variants={{ ...fadeIn, transition: { duration: 0.5, delay: index * 0.1 } }}
     >
-      <motion.div 
-        className="group flex flex-col h-full rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden transition-all duration-300 hover:shadow-blue-200/50"
-        whileHover={{ y: -5, boxShadow: "0 10px 20px rgba(59, 130, 246, 0.2)" }}
+      <motion.div
+        className="group flex flex-col h-full rounded-xl border border-gray-200 bg-white shadow-md overflow-hidden transition-all duration-300 hover:shadow-blue-200/50"
+        whileHover={{ y: -3, boxShadow: "0 6px 15px rgba(59, 130, 246, 0.15)" }}
       >
         <div className="aspect-video overflow-hidden">
-          <img src={p.img} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img
+            src={p.img}
+            alt={p.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
-        <div className="p-4 sm:p-6 flex flex-col flex-grow">
-          <h3 className="text-gray-900 text-base sm:text-lg font-bold">{p.title}</h3> 
-          <p className="mt-2 text-gray-600 text-xs sm:text-sm flex-grow">{p.desc}</p> 
-          <div className="mt-3 flex flex-wrap gap-2">
-            {p.tech.map((t) => <span key={t} className="rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] sm:text-xs font-medium text-blue-600">{t}</span>)}
+        <div className="p-3 sm:p-4 flex flex-col flex-grow">
+          <h3 className="text-gray-900 text-sm sm:text-base md:text-lg font-bold">{p.title}</h3>
+          <p className="mt-1 text-gray-600 text-xs sm:text-sm md:text-base flex-grow">{p.desc}</p>
+          <div className="mt-2 flex flex-wrap gap-1 sm:gap-2">
+            {p.tech.map((t) => (
+              <span
+                key={t}
+                className="rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] sm:text-xs font-medium text-blue-600"
+              >
+                {t}
+              </span>
+            ))}
           </div>
-          <div className="mt-4 sm:mt-5 flex gap-3">
-            <a href={p.code} target="_blank" rel="noreferrer" className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-semibold text-gray-800 hover:bg-gray-200 transition-colors flex items-center gap-2">
+          <div className="mt-3 flex gap-2">
+            <a
+              href={p.code}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-gray-100 px-2 sm:px-3 py-1 text-xs sm:text-sm font-semibold text-gray-800 hover:bg-gray-200 transition-colors flex items-center gap-1"
+            >
               <FaGithub /> Code
             </a>
           </div>
@@ -489,19 +525,30 @@ function ProjectsSection() {
   );
 
   return (
-    <PageContainer id="projects">
-      <SectionTitle title="Featured Creations" desc="A selection of full-stack and frontend projects, emphasizing modern design and solid code architecture." />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"> 
-        {list.map((p, index) => <ProjectCard key={p.title} p={p} index={index} />)}
+    <PageContainer id="projects" className="pt-10 sm:pt-12 pb-8">
+      <SectionTitle
+        title="Featured Creations"
+        desc="A selection of full-stack and frontend projects, showcasing modern design and solid code."
+      />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {list.map((p, index) => (
+          <ProjectCard key={p.title} p={p} index={index} />
+        ))}
       </div>
-      <div className="mt-10 sm:mt-12 text-center">
-        <a href="https://github.com/Fatimabutt786" target="_blank" rel="noreferrer" className="inline-block rounded-full bg-blue-600 px-6 sm:px-8 py-2.5 sm:py-3 text-white font-semibold shadow-lg hover:bg-blue-700 transition duration-300 text-sm">
-          More on GitHub <span className="ml-2 text-xl">🚀</span>
+      <div className="mt-8 sm:mt-10 text-center">
+        <a
+          href="https://github.com/Fatimabutt786"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-block rounded-full bg-blue-600 px-4 sm:px-6 py-2 sm:py-3 text-white font-semibold text-xs sm:text-sm shadow-md hover:bg-blue-700 transition duration-300"
+        >
+          More on GitHub <span className="ml-1 text-lg">🚀</span>
         </a>
       </div>
     </PageContainer>
   );
 }
+
 
 
 // --- Blog Modal Component (SIMPLIFIED - Scroll handled in parent) ---
@@ -609,18 +656,20 @@ function BlogSection() {
       />
       
       {/* Container for the single, centered card */}
-      <div className="flex justify-center">
-        <motion.article
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeIn}
-            className="w-full max-w-xl min-h-[300px]" // Uses max-w-xl to center it nicely
-        >
-            <div 
-              onClick={handleOpenModal} 
-              className="flex flex-col h-full rounded-xl border border-gray-200 bg-white p-5 sm:p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-blue-200/50 hover:border-blue-400 cursor-pointer"
-            >
+      <div className="w-full px-4 sm:px-6 lg:px-8"> 
+  <motion.article
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeIn}
+      className="w-full min-h-[300px] max-w-6xl mx-auto" 
+  >
+
+           <div 
+  onClick={handleOpenModal} 
+  className="flex flex-col h-full rounded-xl border border-gray-200 bg-white p-5 sm:p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-blue-200/50 hover:border-blue-400 cursor-pointer"
+>
+
               <div className="flex items-center gap-3 text-sm text-blue-600 font-semibold mb-2">
                 <FaBookOpen className="w-4 h-4"/> Featured Post
               </div>
